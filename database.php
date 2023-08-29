@@ -3,17 +3,17 @@ error_reporting(0);
 
 class DB
 {
-    private $host = 'localhost';
-    private $user = 'root';
+    private $host = '';
+    private $user = '';
     private $pass = '';
-    private $table = 'dukcapil';
+    private $table = '';
 
     function __construct()
     {
         $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->table);
     }
 
-    function allPost($table, $order)
+    function select($table, $order)
     {
         $sql = "SELECT * FROM $table ORDER BY $order DESC";
         $result = $this->conn->query($sql);
@@ -24,7 +24,7 @@ class DB
         return $res;
     }
 
-    function selectPost($table, $where)
+    function find($table, $where)
     {
         $sql = "SELECT * FROM $table WHERE $where";
         $result = $this->conn->query($sql);
@@ -35,7 +35,7 @@ class DB
         return $res;
     }
 
-    function updatePost($table, $params = array(), $where)
+    function update($table, $params = array(), $where)
     {
         $args = array();
         foreach ($params as $field => $value) {
@@ -46,14 +46,14 @@ class DB
         $this->conn->close();
     }
 
-    function insertPost($table, $params = array())
+    function insert($table, $params = array())
     {
         $sql = 'INSERT INTO `' . $table . '` (`' . implode('`, `', array_keys($params)) . '`) VALUES ("' . implode('", "', $params) . '")';
         $this->conn->query($sql);
         $this->conn->close();
     }
 
-    function deletePost($table, $where)
+    function delete($table, $where)
     {
         $sql = 'DELETE FROM ' . $table . ' WHERE ' . $where;
         $this->conn->query($sql);
