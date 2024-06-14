@@ -3,19 +3,19 @@ error_reporting(0);
 
 class DB
 {
-    private $host = '';
-    private $user = '';
-    private $pass = '';
-    private $table = '';
+    private $host = 'localhost';
+    private $user = 'username';
+    private $pass = 'password';
+    private $table = 'table';
 
     function __construct()
     {
         $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->table);
     }
 
-    function select($table, $order)
+    function select($table)
     {
-        $sql = "SELECT * FROM $table ORDER BY $order DESC";
+        $sql = "SELECT * FROM $table";
         $result = $this->conn->query($sql);
         while ($data = $result->fetch_assoc()) {
             $res[] = $data;
