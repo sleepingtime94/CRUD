@@ -1,2 +1,1 @@
-Sample Project
-Simple PHP Crud with Mysql
+Simple PHP MYSQL CRUD (Create, Read, Update and Delete)
