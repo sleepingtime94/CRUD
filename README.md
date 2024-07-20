@@ -1,1 +1,1 @@
-Simple PHP MYSQL CRUD (Create, Read, Update and Delete)
+## CRUD (Create, Read, Update and Delete)
